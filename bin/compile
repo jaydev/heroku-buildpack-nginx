@@ -17,7 +17,7 @@ NGINX_PACKAGE="http://${S3_BUCKET}.s3.amazonaws.com/nginx-${NGINX_VERSION}.tgz"
 # vendor directories
 VENDORED_NGINX=$(mktemp -d -t nginx.XXXXXX)
 
-# download and upack packages
+# download and unpack packages
 echo "-----> Fetching nginx binaries"
 curl $NGINX_PACKAGE -s -o - | tar xzf - -C $VENDORED_NGINX
 
@@ -36,3 +36,7 @@ touch logs/access.log logs/error.log
 exec bin/nginx -p .
 EOF
 chmod +x "$BUILD_DIR/bin/start_nginx"
+
+# clean up
+rm -rf $BUILD_DIR
+rm -rf $CACHE_DIR
