@@ -38,5 +38,5 @@ EOF
 chmod +x "$BUILD_DIR/bin/start_nginx"
 
 # clean up
-rm -rf $BUILD_DIR
+# rm -rf $BUILD_DIR
 rm -rf $CACHE_DIR
